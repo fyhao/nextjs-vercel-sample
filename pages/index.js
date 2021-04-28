@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({ coronadata }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -54,7 +54,11 @@ export default function Home() {
           >
             <h3>Covid 19  &rarr;</h3>
             <p>
-              TODO to load covid 19 data here
+              <ul>
+                {coronadata.map((data) => (
+                    <li>{data.datetime} - {data.totalcases} {data.death} {data.recovered}</li>
+                ))}
+                </ul>
             </p>
           </a>
 
@@ -74,4 +78,17 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+export async function getStaticProps() {
+  const res = await fetch('https://api.imgshow-apps.com/admin/misc/admin_coronavirus.php?action=viewbyapi')
+  const coronadata = await res.json()
+  return {
+    props: {
+      coronadata,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1, // In seconds
+  }
 }
