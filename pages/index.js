@@ -79,7 +79,7 @@ export default function Home({ coronadata }) {
     </div>
   )
 }
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch('https://api.imgshow-apps.com/admin/misc/admin_coronavirus.php?action=viewbyapi')
   const coronadata = await res.json()
   return {
