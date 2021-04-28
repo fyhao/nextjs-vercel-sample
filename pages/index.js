@@ -60,7 +60,7 @@ export default function Home({ coronadata }) {
                           <td>Date Time</td>
                           <td>Total Cases</td>
                           <td>Total Death</td>
-                          <td>Total Recovered</td>T
+                          <td>Total Recovered</td>
                       </tr>
                   </thead>
                   <tbody>
