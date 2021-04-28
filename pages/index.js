@@ -54,11 +54,26 @@ export default function Home({ coronadata }) {
           >
             <h3>Covid 19  &rarr;</h3>
             <p>
-              <ul>
+              <table border="1" cellspacing="0" cellpadding="1">
+                  <thead>
+                      <tr>
+                          <td>Date Time</td>
+                          <td>Total Cases</td>
+                          <td>Total Death</td>
+                          <td>Total Recovered</td>T
+                      </tr>
+                  </thead>
+                  <tbody>
                 {coronadata.map((data) => (
-                    <li>{data.datetime} - {data.totalcases} {data.death} {data.recovered}</li>
+                    <tr>
+                        <td>{data.datetime}</td>
+                        <td>{data.totalcases}</td>
+                        <td>{data.death}</td>
+                        <td>{data.recovered}</td>
+                    </tr>
                 ))}
-                </ul>
+                </tbody>
+                </table>
             </p>
           </a>
 
